@@ -1,5 +1,17 @@
 var BodyStack = {
-    push: function(document, new_body) {
+    push: function(new_body, document) {
+        if (typeof document == 'undefined') {
+            document = window.document;
+        }
+        if (!new_body) {
+            new_body = document.createElement('body');
+        }
+        else if (typeof new_body == 'string') {
+            var content = new_body;
+            new_body = document.createElement('body');
+            new_body.innerHTML = content;
+        }
+
         var stack = document._body_stack = document._body_stack || [];
         var scroll_configs = [];
         var elements = document.getElementsByTagName('*');
@@ -18,8 +30,8 @@ var BodyStack = {
             scrolled_elements: scroll_configs,
         });
         document.documentElement.replaceChild(new_body, document.body);
+        return new_body;
     },
-    push_with_conten
     pop: function(document) {
         var x = document._body_stack.pop();
         document.documentElement.replaceChild(x.body, document.body);
@@ -29,5 +41,8 @@ var BodyStack = {
             config.element.scrollTop = config.scrollTop;
             config.element.scrollLeft = config.scrollLeft;
         }
+
+        // Just in case caller wants to do anything with this 
+        return x.body;
     },
 }

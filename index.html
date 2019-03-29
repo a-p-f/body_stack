@@ -75,12 +75,19 @@
         })
 
         function create_new_body() {
-            const n = document.createElement('body');
-            n.innerHTML = `
+            var new_html = `
                 <h1>This is the new body!</h1>
                 <button onclick="BodyStack.pop(document);">Restore the body!</button>
             `;
-            BodyStack.push(document, n);
+
+            // These are all valid method calls:
+            BodyStack.push(null, document).innerHTML = new_html;
+            // BodyStack.push().innerHTML = new_html;
+            // BodyStack.push(new_html);
+            
+            // const n = document.createElement('body');
+            // n.innerHTML = new_html;
+            // BodyStack.push(n, document);
         }
     </script>
     <button onclick="create_new_body();">Swap body!</button>
