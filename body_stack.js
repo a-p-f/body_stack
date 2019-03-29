@@ -1,8 +1,6 @@
 var BodyStack = {
     push: function(new_body, document) {
-        if (typeof document == 'undefined') {
-            document = window.document;
-        }
+        document = document || window.document;
         if (!new_body) {
             new_body = document.createElement('body');
         }
@@ -33,6 +31,7 @@ var BodyStack = {
         return new_body;
     },
     pop: function(document) {
+        document = document || window.document;
         var x = document._body_stack.pop();
         document.documentElement.replaceChild(x.body, document.body);
 
