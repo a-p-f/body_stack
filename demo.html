@@ -43,10 +43,12 @@
                 width: 200px;
                 border-right: 1px solid black;
                 margin-right: 1rem;
+
+                /* this is here so that .site-nav is positioned relative to this, rather than body */
+                overflow: auto;
             }
             .site-nav {
                 position: sticky;
-                top: calc(20px + 2rem + 1px);
             }
             .nav-button {
                 display: none;
