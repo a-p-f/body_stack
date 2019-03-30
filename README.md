@@ -20,7 +20,7 @@ When popping a body from the stack and restoring the previous body, Body Stack a
 
 ## Demo
 
-Coming soon.
+https://a-p-f.github.io/body_stack/index.html
 
 ## Accessibility
 
