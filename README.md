@@ -4,7 +4,7 @@ A new approach to full-page overlays on the web.
 
 ## The Problem
 
-When creating full-page overlays (ie. for navigation menus) there are a lot of details to get right, especially if you're at all concerned about accessibility. You need to be aware of z-index and stacking contexts, focus management, scroll-locking, alerting changes to screen readers, etc.
+When creating full-page overlays (ie. for navigation menus) there are a lot of details to get right, especially if you're concerned about accessibility. You need to be aware of z-index and stacking contexts, focus management, scroll-locking, alerting changes to screen readers, etc.
 
 ## The Solution
 
@@ -17,6 +17,10 @@ The old body is kept in memory, and all dynamic state and event listeners are ma
 Rather than maintaining a single reference to the "old body", Body Stack actually maintains a stack of "ancestor bodies" (hence the name). This means you can push as many overlays as you'd like, and pop them one by one.
 
 When popping a body from the stack and restoring the previous body, Body Stack also restores all scroll positions and element focus, since that state is lost when you take elements out of the document.
+
+## Demo
+
+Coming soon.
 
 ## Accessibility
 
@@ -50,3 +54,4 @@ For a no-nonsense full-page overlay menu, this is no problem. For some projects,
 Build a more fully-developed demo, with more dynamic pages.
 
 ## Feedback
+Have any thoughts to share on this project? Please [share them in the comments issue](https://github.com/a-p-f/body_stack/issues/1).
