@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Body Stack Test</title>
+    <script src="body_stack.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: arial;
+        }
+        header {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+            height: 20px;
+            background-color: white;
+        }
+        main {
+            max-width: 500px;
+            padding: 1rem;
+        }
+        .target {
+            position: relative;
+                top: calc(-20px - 2rem - 1px);
+        }
+        .site-nav {
+            padding: 1rem;
+        }
+        .site-nav-column {
+            display: none;
+        }
+        @media(min-width: 1000px) {
+            .site-columns {
+                display: flex;
+            }
+            .site-nav-column {
+                display: block;
+                width: 200px;
+                border-right: 1px solid black;
+                margin-right: 1rem;
+
+                /* this is here so that .site-nav is positioned relative to this, rather than body */
+                overflow: auto;
+            }
+            .site-nav {
+                position: sticky;
+            }
+            .nav-button {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header id="site-header">
+        Body Stack
+
+        <div class="nav-button">
+            <button onclick="toggle_menu();">Menu</button>        
+        </div>
+    </header>
+    <div class="site-columns">
+        <div class="site-nav-column">
+            <nav id="site-nav" class="site-nav"></nav>
+        </div>
+        <main>
+            <h1>Body Stack Test</h1>
+            <p>Note how on wide browsers, this page uses a simple sidebar navigation menu. On narrow screens, the menu is hidden, and becomes available via a menu button in the upper right corner. Clicking the menu button uses BodyStack to replace the body of this document with a new body, which contains just the header and nav menu. Clicking the menu button again will restore the original body, and your scroll position.</p>
+
+            <p>
+                Also note how you can call BodyStack.push() multiple times. From the mobile menu, if you click "Open Nested Menu", we call BodyStack.push() again to open a new menu. You can close both menus, and your scroll position will be restored at each step.
+            </p>
+
+            <p>
+                Lastly, note how the mobile navigation menu is actually functional.
+                To make this work, all we have to do is close the menu when any of the links are clicked.
+                The original body is restored, and the browser does its thing and scrolls to the target.
+            </p>
+
+            <h2>Alligator</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Baboon</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Crocodile</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Deer</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Elk</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Ferret</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Giraffe</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Hare</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </main>
+    </div>
+    <script type="text/javascript">
+        // build the nav menu dynamically
+        var headings = document.querySelectorAll('main h2');
+        var nav = document.getElementById('site-nav');
+        for (var i = 0; i < headings.length; ++i) {
+            var heading = headings[i];
+            var id = 'heading-' + i;
+            heading.innerHTML = `<div class="target" id="${id}"></div>` + heading.innerHTML;
+            nav.innerHTML += `
+                <div><a class="page-link" href="#${id}">${heading.innerText}</a></div>
+            `;
+        }
+
+        // Toggle mobile menu
+        var menu_open = false;
+        function toggle_menu() {
+            if (menu_open) {
+                BodyStack.pop();
+                menu_open = false;
+            }
+            else {
+                var html = document.getElementById('site-header').outerHTML + document.getElementById('site-nav').outerHTML + `<div style="margin: 1rem;"><button onclick="open_nested_menu();">Open Nested Menu</button>`;
+                BodyStack.push(html);
+                menu_open = true;
+            }
+        }
+
+        // if the mobile menu is open and they click a link, close the menu
+        // don't cancel event - let scrolling happen normally
+        document.documentElement.addEventListener('click', function(event) {
+            if (event.target.classList.contains('page-link') && menu_open) {
+                toggle_menu();
+            }
+        }, false);
+
+        // Demonstrate that you can call BodyStack.push() multiple times
+        // to create multi-level navigation
+        function open_nested_menu() {
+            BodyStack.push(`
+                <button onclick="BodyStack.pop();">Close Nested Menu</button>
+            `);
+        }
+    </script>
+</body>
+</html>
