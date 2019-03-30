@@ -25,6 +25,7 @@ var BodyStack = {
         }
         stack.push({
             body: document.body,
+            active_element: document.activeElement,
             scrolled_elements: scroll_configs,
         });
         document.documentElement.replaceChild(new_body, document.body);
@@ -34,6 +35,9 @@ var BodyStack = {
         document = document || window.document;
         var x = document._body_stack.pop();
         document.documentElement.replaceChild(x.body, document.body);
+
+        // restore focus BEFORE restoring scroll positions
+        x.active_element && x.active_element.focus();
 
         for (var i = x.scrolled_elements.length - 1; i >= 0; i--) {
             var config = x.scrolled_elements[i];
