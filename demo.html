@@ -6,7 +6,7 @@
     <style>
         body {
             margin: 0;
-            font: arial;
+            font-family: arial;
         }
         header {
             position: -webkit-sticky;
@@ -71,7 +71,7 @@
         </div>
         <main>
             <h1>Body Stack Test</h1>
-            <p>Note how on wide browsers, this page uses a simple sidebar navigation menu. On narrow screens, the menu is hidden. Clicking the menu button uses BodyStack to replace the body of this document with a new body, which contains just the header and nav menu. Clicking the menu button again will restore the original body, and your scroll position.</p>
+            <p>Note how on wide browsers, this page uses a simple sidebar navigation menu. On narrow screens, the menu is hidden, and becomes available via a menu button in the upper right corner. Clicking the menu button uses BodyStack to replace the body of this document with a new body, which contains just the header and nav menu. Clicking the menu button again will restore the original body, and your scroll position.</p>
 
             <p>
                 Also note how you can call BodyStack.push() multiple times. From the mobile menu, if you click "Open Nested Menu", we call BodyStack.push() again to open a new menu. You can close both menus, and your scroll position will be restored at each step.
